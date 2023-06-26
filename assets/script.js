@@ -18,39 +18,47 @@ const slides = [
 ]
 
 /* Fleche*/
-var count = 0;
-var imgTag = document.querySelector(".banner-img");
-var text = document.querySelector("p");
-var dot = document.querySelectorAll(".dots");
-var dotchild = document.querySelectorAll(".dot");
+let count = 0;
+let imgTag = document.querySelector(".banner-img");
+let text = document.querySelector("#banner p");
+let dotNavigation = document.querySelector(".dots");
+let arrowBefore = document.getElementsByClassName("arrow_left");
+let arrowAfter = document.getElementsByClassName("arrow_right");
 
+  for (let arrow of arrowBefore) {
+	arrow.addEventListener('click', function onClick() {
+		count--;
+		if(count < 0){
+			count = slides.length -1;
+			imgTag.src = slides[count].image;
+			text.textContent = slides[count].tagLine;
+		}else{
+			imgTag.src = slides[count].image;
+			text.textContent = slides[count].tagLine;
+		}
+		updateDots();
+	});}
 
-
-function avant(){
-	alert("Avant");
-	count--;
-    if(count < 0){
-        count = slides.length -1;
-        imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
-    }else{
-        imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
-    }
-}
-
-function apres(){
-	alert("Après")
-	count++;
+	for (let arrow of arrowAfter) {
+		arrow.addEventListener('click', function onClick() {
+			count++;
     if(count >= slides.length){
         count = 0;
         imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
+		text.textContent = slides[count].tagLine;
     }else{
         imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
+		text.textContent = slides[count].tagLine;
     }
-	
+	updateDots();
+		});}
+
+function updateDots() {
+	dotNavigation.forEach((dot, index) => {
+    if (index === count) {
+      dot.classList.add('dot_selected');
+    } else {
+      dot.classList.remove('dot_selected');
+    }
+  });
 }
-
-
