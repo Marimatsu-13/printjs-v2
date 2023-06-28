@@ -17,13 +17,13 @@ const slides = [
 	}
 ]
 
-/* Fleche*/
 let count = 0;
 let imgTag = document.querySelector(".banner-img");
 let text = document.querySelector("#banner p");
 let dotNavigation = document.querySelector(".dots");
 let arrowBefore = document.getElementsByClassName("arrow_left");
 let arrowAfter = document.getElementsByClassName("arrow_right");
+
 
   for (let arrow of arrowBefore) {
 	arrow.addEventListener('click', function onClick() {
@@ -35,8 +35,9 @@ let arrowAfter = document.getElementsByClassName("arrow_right");
 		}else{
 			imgTag.src = slides[count].image;
 			text.textContent = slides[count].tagLine;
+
 		}
-		updateDots();
+		updateDots()	
 	});}
 
 	for (let arrow of arrowAfter) {
@@ -46,19 +47,33 @@ let arrowAfter = document.getElementsByClassName("arrow_right");
         count = 0;
         imgTag.src = slides[count].image;
 		text.textContent = slides[count].tagLine;
+
     }else{
         imgTag.src = slides[count].image;
 		text.textContent = slides[count].tagLine;
+		
     }
-	updateDots();
+	updateDots()
 		});}
 
-function updateDots() {
-	dotNavigation.forEach((dot, index) => {
-    if (index === count) {
-      dot.classList.add('dot_selected');
-    } else {
-      dot.classList.remove('dot_selected');
-    }
-  });
+
+function createDots() {
+  for (let i = 0; i < slides.length-1; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    dotNavigation.appendChild(dot);
+  }
 }
+
+createDots();
+
+function updateDots() {
+	const dots = document.querySelectorAll('.dot');
+	dots.forEach((dot, index) => {
+	  if (index === count) {
+		dot.classList.add('dot_selected');
+	  } else {
+		dot.classList.remove('dot_selected');
+	  }
+	});
+  }
