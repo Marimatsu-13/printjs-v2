@@ -21,12 +21,11 @@ let count = 0;
 let imgTag = document.querySelector(".banner-img");
 let text = document.querySelector("#banner p");
 let dotNavigation = document.querySelector(".dots");
-let arrowBefore = document.getElementsByClassName("arrow_left");
-let arrowAfter = document.getElementsByClassName("arrow_right");
+let arrowBefore = document.querySelector(".arrow_left");
+let arrowAfter = document.querySelector(".arrow_right");
 
-
-  for (let arrow of arrowBefore) {
-	arrow.addEventListener('click', function onClick() {
+ 
+	arrowBefore.addEventListener('click', function onClick() {
 		count--;
 		if(count < 0){
 			count = slides.length -1;
@@ -40,10 +39,10 @@ let arrowAfter = document.getElementsByClassName("arrow_right");
 			
 		}
 		updateDots()	
-	});}
+	});
 
-	for (let arrow of arrowAfter) {
-		arrow.addEventListener('click', function onClick() {
+
+		arrowAfter.addEventListener('click', function onClick() {
 			count++;
     if(count >= slides.length){
         count = 0;
@@ -56,7 +55,7 @@ let arrowAfter = document.getElementsByClassName("arrow_right");
 		
     }
 	updateDots()
-		});}
+		});
 
 
 function createDots() {
