@@ -30,28 +30,52 @@ let arrowAfter = document.querySelector(".arrow_right");
 		if(count < 0){
 			count = slides.length -1;
 			imgTag.src = slides[count].image;
-			text.innerHTML = slides[count].tagLine;
+			const parser = new DOMParser();
+            const doc = parser.parseFromString(slides[count].tagLine, "text/html");
+			const myDiv = doc.querySelector('.myDiv');
+			const txt1 = doc.body.firstChild.textContent;
+			const txt2 = doc.body.lastChild.textContent;
+			text.textContent = txt1;
+			text.insertAdjacentHTML('beforeend', "<span>" + txt2 + "</span>");
 			
 			
 		}else{
 			imgTag.src = slides[count].image;
-			text.innerHTML = slides[count].tagLine;
+			const parser = new DOMParser();
+            const doc = parser.parseFromString(slides[count].tagLine, "text/html");
+			const myDiv = doc.querySelector('.myDiv');
+			const txt1 = doc.body.firstChild.textContent;
+			const txt2 = doc.body.lastChild.textContent;
+			text.textContent = txt1;
+			text.insertAdjacentHTML('beforeend', "<span>" + txt2 + "</span>");
 			
 		}
 		updateDots()	
 	});
 
 
-		arrowAfter.addEventListener('click', function onClick() {
+arrowAfter.addEventListener('click', function onClick() {
 			count++;
     if(count >= slides.length){
         count = 0;
         imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
+		const parser = new DOMParser();
+            const doc = parser.parseFromString(slides[count].tagLine, "text/html");
+			const myDiv = doc.querySelector('.myDiv');
+			const txt1 = doc.body.firstChild.textContent;
+			const txt2 = doc.body.lastChild.textContent;
+			text.textContent = txt1;
+			text.insertAdjacentHTML('beforeend', "<span>" + txt2 + "</span>");
 
     }else{
         imgTag.src = slides[count].image;
-		text.innerHTML = slides[count].tagLine;
+		const parser = new DOMParser();
+            const doc = parser.parseFromString(slides[count].tagLine, "text/html");
+			const myDiv = doc.querySelector('.myDiv');
+			const txt1 = doc.body.firstChild.textContent;
+			const txt2 = doc.body.lastChild.textContent;
+			text.textContent = txt1;
+			text.insertAdjacentHTML('beforeend', "<span>" + txt2 + "</span>");
 		
     }
 	updateDots()
