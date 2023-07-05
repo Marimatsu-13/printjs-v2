@@ -32,7 +32,6 @@ let arrowAfter = document.querySelector(".arrow_right");
 			imgTag.src = slides[count].image;
 			const parser = new DOMParser();
             const doc = parser.parseFromString(slides[count].tagLine, "text/html");
-			const myDiv = doc.querySelector('.myDiv');
 			const txt1 = doc.body.firstChild.textContent;
 			const txt2 = doc.body.lastChild.textContent;
 			text.textContent = txt1;
@@ -43,7 +42,6 @@ let arrowAfter = document.querySelector(".arrow_right");
 			imgTag.src = slides[count].image;
 			const parser = new DOMParser();
             const doc = parser.parseFromString(slides[count].tagLine, "text/html");
-			const myDiv = doc.querySelector('.myDiv');
 			const txt1 = doc.body.firstChild.textContent;
 			const txt2 = doc.body.lastChild.textContent;
 			text.textContent = txt1;
@@ -59,9 +57,8 @@ arrowAfter.addEventListener('click', function onClick() {
     if(count >= slides.length){
         count = 0;
         imgTag.src = slides[count].image;
-		const parser = new DOMParser();
+			const parser = new DOMParser();
             const doc = parser.parseFromString(slides[count].tagLine, "text/html");
-			const myDiv = doc.querySelector('.myDiv');
 			const txt1 = doc.body.firstChild.textContent;
 			const txt2 = doc.body.lastChild.textContent;
 			text.textContent = txt1;
@@ -69,9 +66,8 @@ arrowAfter.addEventListener('click', function onClick() {
 
     }else{
         imgTag.src = slides[count].image;
-		const parser = new DOMParser();
+			const parser = new DOMParser();
             const doc = parser.parseFromString(slides[count].tagLine, "text/html");
-			const myDiv = doc.querySelector('.myDiv');
 			const txt1 = doc.body.firstChild.textContent;
 			const txt2 = doc.body.lastChild.textContent;
 			text.textContent = txt1;
